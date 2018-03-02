@@ -2,10 +2,12 @@
 namespace common\models;
 
 use Yii;
+use common\helpers\Avatar;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yii\helpers\FileHelper;
 
 /**
  * User model
@@ -28,7 +30,7 @@ class User extends ActiveRecord implements IdentityInterface
 
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public static function tableName()
     {
@@ -36,7 +38,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -46,7 +48,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
@@ -57,7 +59,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public static function findIdentity($id)
     {
@@ -65,11 +67,12 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+        return static::findOne(['username' => $token, 'status' => self::STATUS_ACTIVE]);
+        // throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
     }
 
     /**
@@ -119,7 +122,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getId()
     {
@@ -127,7 +130,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getAuthKey()
     {
@@ -135,7 +138,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function validateAuthKey($authKey)
     {
@@ -186,4 +189,26 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+    public function getUserAvatar($size = 50) {
+
+        if ($this->avatar) {
+            $avatarPath = dirname(Yii::$app->basePath) . '/api' . Yii::$app->params['avatarPath'];
+            $avatarCachePath = Yii::$app->basePath . Yii::$app->params['avatarCachePath'];
+            FileHelper::createDirectory($avatarCachePath);
+
+            if (file_exists($avatarCachePath . $size . '_' . $this->avatar)) {
+                return Yii::$app->params['avatarCacheUrl'] . $size . '_' . $this->avatar;
+            }
+            if (file_exists($avatarPath . $this->avatar)) {
+                \yii\imagine\Image::thumbnail($avatarPath . $this->avatar, $size, $size)
+                    ->save($avatarCachePath . $size . '_' . $this->avatar, ['quality' => 100]);
+                return Yii::$app->params['avatarCacheUrl'] . $size . '_' . $this->avatar;
+            }
+        }
+        return (new Avatar($this->email, $size))->getAvatar();
+
+    }
+
+
 }

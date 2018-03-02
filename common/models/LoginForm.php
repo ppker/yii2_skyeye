@@ -17,7 +17,7 @@ class LoginForm extends Model
 
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
@@ -57,10 +57,21 @@ class LoginForm extends Model
     {
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+        } else {
+            return false;
         }
-        
-        return false;
     }
+
+    public function attributeLabels() {
+
+        return [
+            'id' => 'ID',
+            'username' => '用户名',
+            'password' => '密码',
+            'rememberMe' => '记住我'
+        ];
+    }
+
 
     /**
      * Finds user by [[username]]
@@ -70,7 +81,10 @@ class LoginForm extends Model
     protected function getUser()
     {
         if ($this->_user === null) {
-            $this->_user = User::findByUsername($this->username);
+            // 通过邮箱登录
+            if (strpos($this->username, '@')) {
+                $this->_user = User::findByEmail($this->username);
+            } else $this->_user = User::findByUsername($this->username);
         }
 
         return $this->_user;

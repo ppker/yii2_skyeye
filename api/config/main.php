@@ -20,6 +20,8 @@ return [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-api', 'httpOnly' => true],
+            'enableSession' => false,
+            'loginUrl' => null,
         ],
         'session' => [
             // this is the name of the session cookie used for login on the api
@@ -30,21 +32,44 @@ return [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['info', 'error', 'warning'],
+                    'logFile' => '@app/runtime/logs/api/'.date('Ymd').'api.log',
+                    'logVars' => [],
+                    'categories' => [
+                        'api',
+                    ]
                 ],
             ],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+            'cachePath' => '@runtime/cache',
+        ],
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'user',
+                    'extraPatterns' => isset($params['api_rule_user']) ? $params['api_rule_user'] : [],
+                    'pluralize' => false,
+                ]
             ],
         ],
-        */
+        
     ],
+
+    /**
+     * 静态加载行为供全局使用
+     */
+    'as rbac' => [
+        'class' => 'api\behaviors\RbacBehavior',
+        'allowActions' => ['site/error', 'frontend/*', 'tools/*'],
+    ],
+
     'params' => $params,
 ];

@@ -37,14 +37,51 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                'database/show/<menu_id:\d+>' => 'database/show',
             ],
         ],
-        */
+        
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'sourcePath' => null,
+                    'js' => [],
+                    'depends' => [
+                        'backend\assets\AppAsset'
+                    ],
+                ],
+                'yii\bootstrap\BootstrapAsset' => [
+                    'css' => []
+                ],
+            ],
+        ],
+
+        'i18n' => [
+            'translations' => [
+                'exception*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@backend/messages',
+                    'fileMap' => 'app.php',
+                ],
+            ]
+        ],
+
     ],
     'params' => $params,
+
+    /**
+     * 静态加载行为供全局使用
+     */
+    'as rbac' => [
+        'class' => 'backend\behaviors\RbacBehavior',
+        'allowActions' => [
+            'site/login', 'site/logout', 'site/check_user', 'debug/*', 'gii/*',
+        ],
+    ],
 ];

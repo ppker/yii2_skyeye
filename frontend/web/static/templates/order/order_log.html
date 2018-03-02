@@ -1,0 +1,24 @@
+<thead class="flip-content">
+<tr role="row">
+    <th style="text-align: center;">姓名</th>
+    <th style="text-align: center;">餐厅</th>
+    <th style="text-align: center;">菜肴</th>
+    <th style="text-align: center;">份数</th>
+    <th style="text-align: center;">单价</th>
+    <th style="text-align: center;">总价</th>
+    <th style="text-align: center;">下单时间</th>
+</tr>
+</thead>
+<tbody>
+{{#each list}}
+<tr id="{{id}}">
+    <td>{{realname}}</td>
+    <td>{{hotel_name}}</td>
+    <td>{{name}}</td>
+    <td>{{num}}</td>
+    <td>{{price}}</td>
+    <td>{{cook_total}}</td>
+    <td>{{created_at}}</td>
+</tr>
+{{/each}}
+</tbody>

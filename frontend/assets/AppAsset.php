@@ -9,15 +9,26 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
+    public $sourcePath = '@common/metronic/assets';
     public $css = [
-        'css/site.css',
     ];
     public $js = [
+        'extend/core/define.js',
+        'extend/core/utils.js',
+        '../../static/js/api.js',
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        'frontend\assets\IeAsset',
+        'frontend\assets\CoreAsset'
     ];
+
+    /*public static function addScript($view, $jsfile) {
+
+        $view->registerJsFile($jsfile, [AppAsset::className(), 'depends' => 'frontend\assets\AppAsset']);
+    }
+    public static function addCss($view, $cssfile) {
+
+        $view->registerCssFile($cssfile, [AppAsset::className(), 'depends' => 'frontend\assets\AppAsset']);
+    }*/
+
 }
