@@ -62,6 +62,7 @@ class RbacBehavior extends Behavior {
                 }
             }
             if (Menu::checkRule($rule, $user)){
+
                 return true;
             }
         } else {
