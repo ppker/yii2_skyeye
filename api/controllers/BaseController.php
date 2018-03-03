@@ -50,6 +50,7 @@ class BaseController extends ActiveController {
 
         header("Access-Control-Allow-Origin: *");
         parent::beforeAction($action);
+
         return Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
     }
 

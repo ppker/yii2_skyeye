@@ -13,9 +13,6 @@ use yii\db\Query;
 use yii\helpers\Url;
 use backend\models\Menu;
 use common\models\User;
-use common\models\CookBook;
-use common\models\Restaurant;
-use common\models\DatabaseSql;
 
 class SystemController extends BaseController {
 

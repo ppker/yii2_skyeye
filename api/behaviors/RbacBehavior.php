@@ -43,12 +43,11 @@ class RbacBehavior extends Behavior {
                 return true;
             }
         }
-
         $user = User::findOne(['username' => $access_token]);
 
         $base_rule = $event->action->getUniqueId();
-        $rule = Yii::$app->id . "/" . $base_rule;
 
+        $rule = Yii::$app->id . "/" . $base_rule;
 
         if (!empty($access_token) && !empty($user)) {
             $event->isValid = true; // 继续执行
@@ -62,7 +61,6 @@ class RbacBehavior extends Behavior {
                 }
             }
             if (Menu::checkRule($rule, $user)){
-
                 return true;
             }
         } else {

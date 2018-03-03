@@ -132,7 +132,7 @@ window.PAGE_ACTION = function() {
                 ZP.api.User_get({
                     data: {id: $id},
                     successCallBack: function(result){
-                        console.log(result.data);
+
                         $("#addModal h4.modal-title").text('用户编辑');
                         $("#addModal input[name='username']").val(result.data.username).after("<input type='hidden' name='id' value=" + $id + ">");
                         $("#addModal select#role_id").val(result.data.status);
