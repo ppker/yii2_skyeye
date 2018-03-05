@@ -90,3 +90,31 @@ create table if not exists `auth_depends` (
   constraint `auth_depends_wj2` foreign key (`api_url`) references `auth_item` (`name`) on delete cascade on update cascade
 
 ) engine InnoDB character set = utf8 collate = utf8_unicode_ci  ROW_FORAT = Compact command = 'api和page对应表';*/
+
+
+/*create table if not exists `worker_task` (
+    `id` int(11) unsigned not null auto_increment,
+    `title` varchar(25) not null default '' comment '任务标题',
+    `content` varchar(255) not null default '' comment '任务说明',
+    `invoke_type` tinyint(1) unsigned not null default '1' comment '1 => yii_cli, 2 => curl　触发类型',
+    `command` varchar(255) not null comment '任务执行的命令',
+    `timer_interval` int(11) unsigned not null default '1' comment '定时器间隔时间 间隔s',
+    `start_time` datetime  null default null comment '任务开始时间',
+    `end_time` datetime  null default null comment '任务截止时间',
+    `trigger_time` time not null comment '任务触发时间',
+    `persistent` tinyint(1) unsigned not null default '1' comment '1 => 每天执行, 0 => 仅执行一次',
+    `start_active_time` int(11) unsigned  not null default '0' comment '任务开始激活时间',
+    `end_active_time` int(11)  not null default '0' comment '任务结束激活时间',
+    `timer_id` int(11) unsigned not null default '0' comment '定时器id',
+    `status` tinyint(1) unsigned not null default '1' comment '任务状态 1 => 正常, 0 => 禁用, 2 => 删除',
+    `load_status` tinyint(1) unsigned not null default '1' comment '定时器装载状态 1 => 已装载, 0 => 未装载',
+    `created_at` int(11) unsigned not null default '0',
+    `updated_at` int(11) unsigned not null default '0',
+    `user_id` int(11) unsigned not null comment '任务创建人id',
+    primary key (`id`) using btree,
+    index `start_time` (`start_time`)  using btree,
+    index `end_time` (`end_time`) using btree,
+    index `timer_id` (`timer_id`) using btree,
+    index `status` (`status`) using btree,
+    index `user_id` (`user_id`) using btree
+) engine InnoDB default charset=utf8 comment '计划任务表';*/

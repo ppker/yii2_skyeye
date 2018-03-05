@@ -21,7 +21,8 @@
         "funson86/yii2-setting": "*",
         "phpoffice/phpspreadsheet": "dev-master",
         "yzalis/identicon": "^1.2@dev",
-        "yiisoft/yii2-imagine": "^2.0@dev"
+        "yiisoft/yii2-imagine": "^2.0@dev",
+        "workerman/gateway-worker": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2b213a33ed9e9b76b9e0f8a7fd22395a",
+    "content-hash": "e3a8aa9601890bcf3a963cfe9e86a46f",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -621,6 +621,86 @@
                 "mailer"
             ],
             "time": "2018-02-27T06:34:13+00:00"
+        },
+        {
+            "name": "workerman/gateway-worker",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/GatewayWorker.git",
+                "reference": "2a7a3e0a819220e370b25fd23c8fb64443a42633"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/walkor/GatewayWorker/2a7a3e0a819220e370b25fd23c8fb64443a42633.zip",
+                "reference": "2a7a3e0a819220e370b25fd23c8fb64443a42633",
+                "shasum": ""
+            },
+            "require": {
+                "workerman/workerman": ">=3.1.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GatewayWorker\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "homepage": "http://www.workerman.net",
+            "keywords": [
+                "communication",
+                "distributed"
+            ],
+            "time": "2017-09-28T03:22:03+00:00"
+        },
+        {
+            "name": "workerman/workerman",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/Workerman.git",
+                "reference": "2700d6e091919afbb7f4c2e2f1960d09a22465cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/walkor/Workerman/2700d6e091919afbb7f4c2e2f1960d09a22465cf.zip",
+                "reference": "2700d6e091919afbb7f4c2e2f1960d09a22465cf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "suggest": {
+                "ext-event": "For better performance. "
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Workerman\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "walkor",
+                    "email": "walkor@workerman.net",
+                    "homepage": "http://www.workerman.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An asynchronous event driven PHP framework for easily building fast, scalable network applications.",
+            "homepage": "http://www.workerman.net",
+            "keywords": [
+                "asynchronous",
+                "event-loop"
+            ],
+            "time": "2018-03-01T02:16:15+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -3640,7 +3720,8 @@
     "stability-flags": {
         "phpoffice/phpspreadsheet": 20,
         "yzalis/identicon": 20,
-        "yiisoft/yii2-imagine": 20
+        "yiisoft/yii2-imagine": 20,
+        "workerman/gateway-worker": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
