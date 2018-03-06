@@ -18,12 +18,9 @@ class Task {
     public function getTasks() {
 
         $now = date('Y-m-d H:i:s');
-        $tasks = $this->__db->createCommand()->select('*')->from('worker_task')->where('status = 1 and start_time <= :start_time and 
-        end_time < :end_time', [
-            ':start_time' => $now,
-            ':end_time' => $now
-        ])->order('id asc')->queryAll();
 
-        var_dump($tasks);die;
+        $tacks = $this->__db->createCommand("select * from {{%worker_task%}} where [[status]] = 1 and [[start_time]] <= :start_time and 
+end_time > :end_time order by id asc ", [':start_time' => $now, ':end_time' => $now])->queryAll(); // ->getRawSql();
+        return $tacks;
     }
 }

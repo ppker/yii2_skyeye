@@ -23,10 +23,16 @@ return [
     ],
     'components' => [
         'log' => [
+            'flushInterval' => 100,
+            'exportInterval' => 100,
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['error', 'warning', 'info'],
+                    'logVars' => [],
+                    'logFile' => '@app/runtime/logs/test.log',
+                    'categories' => ['api'],
+
                 ],
             ],
         ],

@@ -10,10 +10,9 @@
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
 
-require_once __DIR__ . "/../../vendor/autoload.php";
 
 // 加载utils类库
-foreach (glob(__DIR__ . '/*.php') as $util_file) {
+foreach (glob(__DIR__ . '/utils/*.php') as $util_file) {
     require_once $util_file;
 }
 
@@ -42,12 +41,18 @@ $work->protocol = 'Workerman\\Protocols\\Text';
 $work->onWorkerStart = function($work) {
 
     require_once __DIR__ . "/../../worker_yii.php";
-    global $yii_app, $yii_db;
+    global $yii_app;
+    global $yii_db;
     $yii_app = Yii::$app;
     $yii_db = Yii::$app->db;
 
     $task_list = (new Task($yii_db))->getTasks();
-    var_dump($task_list);die;
+    if (empty($task_list)) return;
+    foreach ($task_list as $val) {
+        Load_task::into_timer($val);
+    }
+
+    echo "定时任务模块 started by " . date('Y-m-d H:i:s') . PHP_EOL;
 
 };
 
