@@ -22,8 +22,28 @@ class Cron {
         $now_m = date('H:i');
 
         if ($now >= strtotime($data['start_time']) && $now < strtotime($data['end_time'])) {
+            if (1 == $data['persistent']) {
+                if (!$this->timeSure($data, $now_s, $now_m)) return false;
+            } else if (0 == $data['persistent']) {
+                if (!$this->timeSure($data, $now_s, $now_m)) return false;
+            } else return false;
+
+
 
         }
 
     }
+
+    public function timeSure($data, $now_s, $now_m) {
+
+        if (empty($data['trigger_time'])) return false;
+        if ('00' == substr($data['trigger_time'], -2)) { // 精确到分钟
+            if (0 !== strpos($data['trigger_time'], $now_m)) return false;
+        } else { // 精确到秒
+            if (0 !== strpos($data['trigger_time'], $now_s)) return false;
+        }
+
+        return true;
+    }
+
 }

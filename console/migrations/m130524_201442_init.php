@@ -118,3 +118,30 @@ create table if not exists `auth_depends` (
     index `status` (`status`) using btree,
     index `user_id` (`user_id`) using btree
 ) engine InnoDB default charset=utf8 comment '计划任务表';*/
+
+/*create table if not exists `worker_task_log` (
+    `id` int(13) unsigned not null auto_increment,
+    `task_id` int(11) unsigned not null comment 'task id',
+    `run_time` datetime not null comment '开始运行时间',
+    `cost_time` decimal(8,4) not null default '0' comment '消费时间',
+    `cost_memory` int(11) unsigned not null default '0' comment '消费内存',
+    `data` varchar(255) default '' comment '返回数据',
+    `code` tinyint(1) unsigned not null default '1' comment '1 => 执行成功, 0 => 执行失败',
+    `created_at` int(11) unsigned not null default '0',
+    `updated_at` int(11) unsigned not null default '0',
+    primary key (`id`) using btree,
+    index `task_id` (`task_id`) using btree
+) engine InnoDB default charset=utf8 comment '计划任务日志表';*/
+
+
+
+
+
+
+
+
+
+
+
+
+
