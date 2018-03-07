@@ -118,26 +118,6 @@ class SystemController extends BaseController {
         return parent::re_format($data);
     }
 
-    /**
-     * 获取所有餐厅的菜肴 name, id
-     * @return array
-     */
-    public function actionSelect_dishes_api() {
-
-        $data = CookBook::find()->select(["id", "name"])->asArray()->all();
-        return parent::re_format($data);
-    }
-
-    /**
-     * 获取所有餐厅的 name, id
-     * @return array
-     */
-    public function actionSelect_hotels_api() {
-
-        $data = Restaurant::find()->select(["id", "name"])->asArray()->all();
-        return parent::re_format($data);
-    }
-
 
     public function actionMenu_get() {
 
@@ -182,74 +162,9 @@ class SystemController extends BaseController {
         return parent::re_format($data);
     }
 
+    public function actionSystem_task() {
 
-    
-    public function actionDatabase_config_list() {
-
-        $data = DatabaseSql::find()->asArray()->all();
-        if (!empty($data)) {
-            foreach ($data as &$v) {
-                $v['created_at'] = date('Y-m-d H:i:s', $v['created_at']);
-                $v['updated_at'] = date('Y-m-d H:i:s', $v['updated_at']);
-                $v['status'] = $this->_cfg_status[$v['status']];
-            }
-        }
-        return parent::re_format($data);
-    }
-
-
-    public function actionDatabase_config_add() {
-
-        $data = Yii::$app->getRequest()->post();
-
-        $model = new DatabaseSql();
-        if (empty($data['id'])) { // 新增
-            $data['created_at'] = time();
-            $data['updated_at'] = time();
-            unset($data['id'], $data['_csrf-backend']);
-
-            if ($model->load($data) && $model->save()) {
-                return ['success' => 1, 'message' => '添加成功！', 'data' => []];
-            } else return ['success' => 0, 'message' => '添加失败！', 'data' => []];
-        } else { // 修改
-            $databaseSql = DatabaseSql::findOne((int)$data['id']);
-            if (!empty($databaseSql)) {
-                unset($data['id'], $data['_csrf-backend']);
-                $data['updated_at'] = time();
-
-                if ($databaseSql->load($data) && $databaseSql->update()) {
-                    return ['success' => 1, 'message' => '更新成功！', 'data' => []];
-                } else return ['success' => 0, 'message' => '更新失败！', 'data' => []];
-            }
-        }
-
-
-    }
-
-
-    public function actionDatabase_config_get() {
-
-        $id = Yii::$app->getRequest()->post('id');
-        if (empty($id)) return ['success' => 0, 'message' => '查询失败！', 'data' => []];
-        $data = DatabaseSql::find()->where(['id' => (int)$id])->asArray()->one();
-        return parent::re_format($data);
-    }
-
-    public function actionDatabase_config_del() {
-
-        $id = Yii::$app->getRequest()->post('id');
-        if (empty($id)) return ['success' => 0, 'message' => '缺少菜单ID参数！', 'data' => []];
-
-        if (is_array($id)) {
-            if (DatabaseSql::deleteAll(['in', 'id', $id])) {
-                return ['success' => 1, 'message' => '批量删除成功！', 'data' => []];
-            } else return ['success' => 0, 'message' => '批量删除失败！', 'data' => []];
-        }else {
-            if (DatabaseSql::findOne($id)->delete()) {
-                return ['success' => 1, 'message' => '删除成功！', 'data' => []];
-            } else return ['success' => 0, 'message' => '删除失败！', 'data' => []];
-        }
-
+        (new \yii\db\Query())->from('{{%worker_task}}')
     }
 
 

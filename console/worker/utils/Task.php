@@ -23,4 +23,22 @@ class Task {
 end_time > :end_time order by id asc ", [':start_time' => $now, ':end_time' => $now])->queryAll(); // ->getRawSql();
         return $tacks;
     }
+
+    public function updateCron($task_id, $timer_id) {
+
+        $result = $this->__db->createCommand()->update("worker_task", ['timer_id' => $timer_id,
+            'start_active_time' => time(),
+            'load_status' => 1,
+            ], ['id' => $task_id])->execute();
+        return $result;
+    }
+
+    public function clear_timer() {
+
+        $res_clear = $this->__db->createCommand()->update("worker_task", ['timer_id' => 0, 'end_active_time' => time(), 'load_status' => 0, 'updated_at' => time()],
+            ['status' => 1, 'load_status' => 0])->execute();
+        return $res_clear;
+    }
+
+
 }

@@ -24,7 +24,6 @@ return [
     'components' => [
         'log' => [
             'flushInterval' => 100,
-            'exportInterval' => 100,
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
@@ -32,7 +31,7 @@ return [
                     'logVars' => [],
                     'logFile' => '@app/runtime/logs/test.log',
                     'categories' => ['api'],
-
+                    'exportInterval' => 100,
                 ],
             ],
         ],

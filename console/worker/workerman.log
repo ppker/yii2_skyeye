@@ -14833,3 +14833,406 @@ Stack trace:
 2018-03-06 16:13:11 pid:12009 Workerman[start.php] start in DEBUG mode
 2018-03-06 16:13:12 pid:12009 Workerman[start.php] stopping ...
 2018-03-06 16:13:12 pid:12009 Workerman[start.php] has been stopped
+2018-03-07 13:49:10 pid:10034 Workerman[start.php] start in DEBUG mode
+2018-03-07 13:49:10 pid:10035 yii\base\UnknownPropertyException: Setting unknown property: yii\log\Dispatcher::exportInterval in /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Component.php:209
+Stack trace:
+#0 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/BaseYii.php(546): yii\base\Component->__set('exportInterval', 100)
+#1 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/BaseObject.php(107): yii\BaseYii::configure(Object(yii\log\Dispatcher), Array)
+#2 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/log/Dispatcher.php(90): yii\base\BaseObject->__construct(Array)
+#3 [internal function]: yii\log\Dispatcher->__construct(Array)
+#4 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/di/Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#5 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/di/Container.php(156): yii\di\Container->build('yii\\log\\Dispatc...', Array, Array)
+#6 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/BaseYii.php(349): yii\di\Container->get('yii\\log\\Dispatc...', Array, Array)
+#7 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/di/ServiceLocator.php(137): yii\BaseYii::createObject(Array)
+#8 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Module.php(742): yii\di\ServiceLocator->get('log', true)
+#9 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Application.php(313): yii\base\Module->get('log')
+#10 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Application.php(273): yii\base\Application->bootstrap()
+#11 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/console/Application.php(124): yii\base\Application->init()
+#12 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/BaseObject.php(109): yii\console\Application->init()
+#13 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Application.php(206): yii\base\BaseObject->__construct(Array)
+#14 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/console/Application.php(89): yii\base\Application->__construct(Array)
+#15 /var/www/html/yii2/skyeye/worker_yii.php(24): yii\console\Application->__construct(Array)
+#16 /var/www/html/yii2/skyeye/console/worker/start_worker.php(46): require_once('/var/www/html/y...')
+#17 [internal function]: {closure}(Object(Workerman\Worker))
+#18 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2080): call_user_func(Object(Closure), Object(Workerman\Worker))
+#19 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#20 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#21 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#22 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(459): Workerman\Worker::forkWorkers()
+#23 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#24 {main}
+2018-03-07 13:49:11 pid:10035 Worker process terminated
+2018-03-07 13:49:11 pid:10034 worker[my_worker_timer:10035] exit with status 64000
+2018-03-07 13:49:11 pid:10036 yii\base\UnknownPropertyException: Setting unknown property: yii\log\Dispatcher::exportInterval in /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Component.php:209
+Stack trace:
+#0 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/BaseYii.php(546): yii\base\Component->__set('exportInterval', 100)
+#1 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/BaseObject.php(107): yii\BaseYii::configure(Object(yii\log\Dispatcher), Array)
+#2 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/log/Dispatcher.php(90): yii\base\BaseObject->__construct(Array)
+#3 [internal function]: yii\log\Dispatcher->__construct(Array)
+#4 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/di/Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#5 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/di/Container.php(156): yii\di\Container->build('yii\\log\\Dispatc...', Array, Array)
+#6 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/BaseYii.php(349): yii\di\Container->get('yii\\log\\Dispatc...', Array, Array)
+#7 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/di/ServiceLocator.php(137): yii\BaseYii::createObject(Array)
+#8 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Module.php(742): yii\di\ServiceLocator->get('log', true)
+#9 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Application.php(313): yii\base\Module->get('log')
+#10 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Application.php(273): yii\base\Application->bootstrap()
+#11 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/console/Application.php(124): yii\base\Application->init()
+#12 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/BaseObject.php(109): yii\console\Application->init()
+#13 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Application.php(206): yii\base\BaseObject->__construct(Array)
+#14 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/console/Application.php(89): yii\base\Application->__construct(Array)
+#15 /var/www/html/yii2/skyeye/worker_yii.php(24): yii\console\Application->__construct(Array)
+#16 /var/www/html/yii2/skyeye/console/worker/start_worker.php(46): require_once('/var/www/html/y...')
+#17 [internal function]: {closure}(Object(Workerman\Worker))
+#18 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2080): call_user_func(Object(Closure), Object(Workerman\Worker))
+#19 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#20 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#21 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#22 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1425): Workerman\Worker::forkWorkers()
+#23 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1374): Workerman\Worker::monitorWorkersForLinux()
+#24 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(461): Workerman\Worker::monitorWorkers()
+#25 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#26 {main}
+2018-03-07 13:49:12 pid:10036 Worker process terminated
+2018-03-07 13:49:12 pid:10034 worker[my_worker_timer:10036] exit with status 64000
+2018-03-07 13:49:12 pid:10037 yii\base\UnknownPropertyException: Setting unknown property: yii\log\Dispatcher::exportInterval in /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Component.php:209
+Stack trace:
+#0 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/BaseYii.php(546): yii\base\Component->__set('exportInterval', 100)
+#1 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/BaseObject.php(107): yii\BaseYii::configure(Object(yii\log\Dispatcher), Array)
+#2 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/log/Dispatcher.php(90): yii\base\BaseObject->__construct(Array)
+#3 [internal function]: yii\log\Dispatcher->__construct(Array)
+#4 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/di/Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#5 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/di/Container.php(156): yii\di\Container->build('yii\\log\\Dispatc...', Array, Array)
+#6 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/BaseYii.php(349): yii\di\Container->get('yii\\log\\Dispatc...', Array, Array)
+#7 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/di/ServiceLocator.php(137): yii\BaseYii::createObject(Array)
+#8 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Module.php(742): yii\di\ServiceLocator->get('log', true)
+#9 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Application.php(313): yii\base\Module->get('log')
+#10 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Application.php(273): yii\base\Application->bootstrap()
+#11 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/console/Application.php(124): yii\base\Application->init()
+#12 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/BaseObject.php(109): yii\console\Application->init()
+#13 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/base/Application.php(206): yii\base\BaseObject->__construct(Array)
+#14 /var/www/html/yii2/skyeye/vendor/yiisoft/yii2/console/Application.php(89): yii\base\Application->__construct(Array)
+#15 /var/www/html/yii2/skyeye/worker_yii.php(24): yii\console\Application->__construct(Array)
+#16 /var/www/html/yii2/skyeye/console/worker/start_worker.php(46): require_once('/var/www/html/y...')
+#17 [internal function]: {closure}(Object(Workerman\Worker))
+#18 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2080): call_user_func(Object(Closure), Object(Workerman\Worker))
+#19 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#20 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#21 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#22 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1425): Workerman\Worker::forkWorkers()
+#23 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1374): Workerman\Worker::monitorWorkersForLinux()
+#24 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(461): Workerman\Worker::monitorWorkers()
+#25 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#26 {main}
+2018-03-07 13:49:12 pid:10034 Workerman[start.php] stopping ...
+2018-03-07 13:49:12 pid:10037 Worker process terminated
+2018-03-07 13:49:12 pid:10034 worker[my_worker_timer:10037] exit with status 64000
+2018-03-07 13:49:12 pid:10034 Workerman[start.php] has been stopped
+2018-03-07 13:52:28 pid:10350 Workerman[start.php] start in DEBUG mode
+2018-03-07 13:52:28 pid:10351 yii\base\ErrorException: Undefined index: interval in /var/www/html/yii2/skyeye/console/worker/start_worker.php:23
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/start_worker.php(23): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/var/www/html/y...', 23, Array)
+#1 /var/www/html/yii2/skyeye/console/worker/start_worker.php(55): Load_task::into_timer(Array)
+#2 [internal function]: {closure}(Object(Workerman\Worker))
+#3 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2080): call_user_func(Object(Closure), Object(Workerman\Worker))
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(459): Workerman\Worker::forkWorkers()
+#8 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#9 {main}
+2018-03-07 13:52:29 pid:10351 Worker process terminated
+2018-03-07 13:52:29 pid:10350 worker[my_worker_timer:10351] exit with status 64000
+2018-03-07 13:52:29 pid:10352 yii\base\ErrorException: Undefined index: interval in /var/www/html/yii2/skyeye/console/worker/start_worker.php:23
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/start_worker.php(23): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/var/www/html/y...', 23, Array)
+#1 /var/www/html/yii2/skyeye/console/worker/start_worker.php(55): Load_task::into_timer(Array)
+#2 [internal function]: {closure}(Object(Workerman\Worker))
+#3 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2080): call_user_func(Object(Closure), Object(Workerman\Worker))
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1425): Workerman\Worker::forkWorkers()
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1374): Workerman\Worker::monitorWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(461): Workerman\Worker::monitorWorkers()
+#10 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#11 {main}
+2018-03-07 13:52:29 pid:10350 Workerman[start.php] stopping ...
+2018-03-07 13:52:29 pid:10352 Worker process terminated
+2018-03-07 13:52:29 pid:10350 worker[my_worker_timer:10352] exit with status 64000
+2018-03-07 13:52:29 pid:10350 Workerman[start.php] has been stopped
+2018-03-07 13:54:21 pid:10559 Workerman[start.php] start in DEBUG mode
+2018-03-07 13:54:23 pid:10560 yii\base\ErrorException: Illegal string offset 'start_time' in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:26
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(26): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', '/var/www/html/y...', 26, Array)
+#1 [internal function]: Cron::invoke('1', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '1', 'test/index', '2', '2018-03-05 15:5...', '2018-03-28 15:5...', '13:55:00', '1', '0', '0', '0', '1', '1', '0', '0', '1')
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(459): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#11 {main}
+2018-03-07 13:54:23 pid:10560 Worker process terminated
+2018-03-07 13:54:23 pid:10559 worker[my_worker_timer:10560] exit with status 64000
+2018-03-07 13:54:25 pid:10563 yii\base\ErrorException: Illegal string offset 'start_time' in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:26
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(26): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', '/var/www/html/y...', 26, Array)
+#1 [internal function]: Cron::invoke('1', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '1', 'test/index', '2', '2018-03-05 15:5...', '2018-03-28 15:5...', '13:55:00', '1', '0', '0', '1', '1', '1', '0', '0', '1')
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1425): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1374): Workerman\Worker::monitorWorkersForLinux()
+#11 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(461): Workerman\Worker::monitorWorkers()
+#12 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#13 {main}
+2018-03-07 13:54:25 pid:10563 Worker process terminated
+2018-03-07 13:54:25 pid:10559 worker[my_worker_timer:10563] exit with status 64000
+2018-03-07 13:54:26 pid:10559 Workerman[start.php] stopping ...
+2018-03-07 13:54:26 pid:10559 Workerman[start.php] has been stopped
+2018-03-07 13:59:05 pid:10752 Workerman[start.php] start in DEBUG mode
+2018-03-07 13:59:08 pid:10753 yii\base\ErrorException: Illegal string offset 'start_time' in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:26
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(26): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', '/var/www/html/y...', 26, Array)
+#1 [internal function]: Cron::invoke('1', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '1', 'test/index', '2', '2018-03-05 15:5...', '2018-03-28 15:5...', '14:02:00', '1', '0', '0', '1', '1', '1', '0', '0', '1')
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(459): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#11 {main}
+2018-03-07 13:59:08 pid:10753 Worker process terminated
+2018-03-07 13:59:08 pid:10752 worker[my_worker_timer:10753] exit with status 64000
+2018-03-07 13:59:10 pid:10754 yii\base\ErrorException: Illegal string offset 'start_time' in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:26
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(26): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', '/var/www/html/y...', 26, Array)
+#1 [internal function]: Cron::invoke('1', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '1', 'test/index', '2', '2018-03-05 15:5...', '2018-03-28 15:5...', '14:02:00', '1', '0', '0', '1', '1', '1', '0', '0', '1')
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1425): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1374): Workerman\Worker::monitorWorkersForLinux()
+#11 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(461): Workerman\Worker::monitorWorkers()
+#12 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#13 {main}
+2018-03-07 13:59:10 pid:10754 Worker process terminated
+2018-03-07 13:59:10 pid:10752 worker[my_worker_timer:10754] exit with status 64000
+2018-03-07 13:59:11 pid:10752 Workerman[start.php] stopping ...
+2018-03-07 13:59:11 pid:10752 Workerman[start.php] has been stopped
+2018-03-07 14:00:20 pid:10843 Workerman[start.php] start in DEBUG mode
+2018-03-07 14:00:22 pid:10844 yii\base\ErrorException: Illegal string offset 'start_time' in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:26
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(26): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', '/var/www/html/y...', 26, Array)
+#1 [internal function]: Cron::invoke('1', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '1', 'test/index', '2', '2018-03-05 15:5...', '2018-03-28 15:5...', '14:02:00', '1', '0', '0', '1', '1', '1', '0', '0', '1')
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(459): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#11 {main}
+2018-03-07 14:00:22 pid:10844 Worker process terminated
+2018-03-07 14:00:22 pid:10843 worker[my_worker_timer:10844] exit with status 64000
+2018-03-07 14:00:24 pid:10843 Workerman[start.php] stopping ...
+2018-03-07 14:00:24 pid:10843 Workerman[start.php] has been stopped
+2018-03-07 14:03:22 pid:11049 Workerman[start.php] start in DEBUG mode
+2018-03-07 14:03:24 pid:11050 yii\base\ErrorException: Illegal string offset 'start_time' in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:26
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(26): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', '/var/www/html/y...', 26, Array)
+#1 [internal function]: Cron::invoke('1', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '1', 'test/index', '2', '2018-03-05 15:5...', '2018-03-28 15:5...', '14:02:00', '1', '0', '0', '1', '1', '1', '0', '0', '1')
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(459): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#11 {main}
+2018-03-07 14:03:24 pid:11050 Worker process terminated
+2018-03-07 14:03:24 pid:11049 worker[my_worker_timer:11050] exit with status 64000
+2018-03-07 14:03:26 pid:11053 yii\base\ErrorException: Illegal string offset 'start_time' in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:26
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(26): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', '/var/www/html/y...', 26, Array)
+#1 [internal function]: Cron::invoke('1', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '1', 'test/index', '2', '2018-03-05 15:5...', '2018-03-28 15:5...', '14:02:00', '1', '0', '0', '1', '1', '1', '0', '0', '1')
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1425): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1374): Workerman\Worker::monitorWorkersForLinux()
+#11 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(461): Workerman\Worker::monitorWorkers()
+#12 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#13 {main}
+2018-03-07 14:03:26 pid:11053 Worker process terminated
+2018-03-07 14:03:26 pid:11049 worker[my_worker_timer:11053] exit with status 64000
+2018-03-07 14:03:27 pid:11049 Workerman[start.php] stopping ...
+2018-03-07 14:03:27 pid:11049 Workerman[start.php] has been stopped
+2018-03-07 14:05:58 pid:11192 Workerman[start.php] start in DEBUG mode
+2018-03-07 14:06:00 pid:11194 yii\base\ErrorException: Illegal string offset 'start_time' in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:28
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(28): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', '/var/www/html/y...', 28, Array)
+#1 [internal function]: Cron::invoke('1', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '1', 'test/index', '2', '2018-03-05 15:5...', '2018-03-28 15:5...', '14:02:00', '1', '0', '0', '1', '1', '1', '0', '0', '1')
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(459): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#11 {main}
+2018-03-07 14:06:00 pid:11194 Worker process terminated
+2018-03-07 14:06:00 pid:11192 worker[my_worker_timer:11194] exit with status 64000
+2018-03-07 14:06:02 pid:11197 yii\base\ErrorException: Illegal string offset 'start_time' in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:28
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(28): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', '/var/www/html/y...', 28, Array)
+#1 [internal function]: Cron::invoke('1', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '1', 'test/index', '2', '2018-03-05 15:5...', '2018-03-28 15:5...', '14:02:00', '1', '0', '0', '1', '1', '1', '0', '0', '1')
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1425): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1374): Workerman\Worker::monitorWorkersForLinux()
+#11 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(461): Workerman\Worker::monitorWorkers()
+#12 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#13 {main}
+2018-03-07 14:06:02 pid:11197 Worker process terminated
+2018-03-07 14:06:02 pid:11192 worker[my_worker_timer:11197] exit with status 64000
+2018-03-07 14:06:02 pid:11192 Workerman[start.php] stopping ...
+2018-03-07 14:06:03 pid:11192 Workerman[start.php] has been stopped
+2018-03-07 14:06:53 pid:11232 Workerman[start.php] start in DEBUG mode
+2018-03-07 14:06:55 pid:11233 yii\base\ErrorException: Illegal string offset 'start_time' in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:28
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(28): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', '/var/www/html/y...', 28, Array)
+#1 [internal function]: Cron::invoke('1', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '1', 'test/index', '2', '2018-03-05 15:5...', '2018-03-28 15:5...', '14:02:00', '1', '0', '0', '1', '1', '1', '0', '0', '1')
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(459): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#11 {main}
+2018-03-07 14:06:55 pid:11233 Worker process terminated
+2018-03-07 14:06:55 pid:11232 worker[my_worker_timer:11233] exit with status 64000
+2018-03-07 14:06:55 pid:11232 Workerman[start.php] stopping ...
+2018-03-07 14:06:55 pid:11232 Workerman[start.php] has been stopped
+2018-03-07 14:08:29 pid:11309 Workerman[start.php] start in DEBUG mode
+2018-03-07 14:08:31 pid:11310 yii\base\ErrorException: Illegal string offset 'start_time' in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:28
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(28): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', '/var/www/html/y...', 28, Array)
+#1 [internal function]: Cron::invoke('1', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '1', 'test/index', '2', '2018-03-05 15:5...', '2018-03-28 15:5...', '14:02:00', '1', '0', '0', '1', '1', '1', '0', '0', '1')
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(459): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#11 {main}
+2018-03-07 14:08:31 pid:11310 Worker process terminated
+2018-03-07 14:08:31 pid:11309 worker[my_worker_timer:11310] exit with status 64000
+2018-03-07 14:08:33 pid:11309 Workerman[start.php] stopping ...
+2018-03-07 14:08:33 pid:11309 Workerman[start.php] has been stopped
+2018-03-07 14:09:32 pid:11402 Workerman[start.php] start in DEBUG mode
+2018-03-07 14:09:34 pid:11405 yii\base\ErrorException: Illegal string offset 'start_time' in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:28
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(28): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', '/var/www/html/y...', 28, Array)
+#1 [internal function]: Cron::invoke('1', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '\xE6\xB5\x8B\xE8\xAF\x95\xE4\xB8\x80\xE5\x8F\xB7', '1', 'test/index', '2', '2018-03-05 15:5...', '2018-03-28 15:5...', '14:02:00', '1', '0', '0', '1', '1', '1', '0', '0', '1')
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(459): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#11 {main}
+2018-03-07 14:09:34 pid:11405 Worker process terminated
+2018-03-07 14:09:34 pid:11402 worker[my_worker_timer:11405] exit with status 64000
+2018-03-07 14:09:35 pid:11402 Workerman[start.php] stopping ...
+2018-03-07 14:09:35 pid:11402 Workerman[start.php] has been stopped
+2018-03-07 14:14:49 pid:11647 Workerman[start.php] start in DEBUG mode
+2018-03-07 14:14:51 pid:11648 yii\base\ErrorException: Non-static method Cron::timeSure() should not be called statically in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:33
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(33): yii\base\ErrorHandler->handleError(8192, 'Non-static meth...', '/var/www/html/y...', 33, Array)
+#1 [internal function]: Cron::invoke(Array)
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(459): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#11 {main}
+2018-03-07 14:14:51 pid:11648 Worker process terminated
+2018-03-07 14:14:51 pid:11647 worker[my_worker_timer:11648] exit with status 64000
+2018-03-07 14:14:53 pid:11652 yii\base\ErrorException: Non-static method Cron::timeSure() should not be called statically in /var/www/html/yii2/skyeye/console/worker/utils/Cron.php:33
+Stack trace:
+#0 /var/www/html/yii2/skyeye/console/worker/utils/Cron.php(33): yii\base\ErrorHandler->handleError(8192, 'Non-static meth...', '/var/www/html/y...', 33, Array)
+#1 [internal function]: Cron::invoke(Array)
+#2 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(157): call_user_func_array(Array, Array)
+#3 [internal function]: Workerman\Events\Event->timerCallback(-1, 1, Array)
+#4 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Events/Event.php(185): EventBase->loop()
+#5 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(2095): Workerman\Events\Event->loop()
+#6 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1293): Workerman\Worker->run()
+#7 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1126): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#8 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1099): Workerman\Worker::forkWorkersForLinux()
+#9 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1425): Workerman\Worker::forkWorkers()
+#10 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(1374): Workerman\Worker::monitorWorkersForLinux()
+#11 /var/www/html/yii2/skyeye/vendor/workerman/workerman/Worker.php(461): Workerman\Worker::monitorWorkers()
+#12 /var/www/html/yii2/skyeye/console/worker/start.php(24): Workerman\Worker::runAll()
+#13 {main}
+2018-03-07 14:14:53 pid:11652 Worker process terminated
+2018-03-07 14:14:53 pid:11647 worker[my_worker_timer:11652] exit with status 64000
+2018-03-07 14:14:53 pid:11647 Workerman[start.php] stopping ...
+2018-03-07 14:14:53 pid:11647 Workerman[start.php] has been stopped
+2018-03-07 14:19:14 pid:11837 Workerman[start.php] start in DEBUG mode
+2018-03-07 14:25:37 pid:11837 Workerman[start.php] stopping ...
+2018-03-07 14:25:37 pid:11837 Workerman[start.php] has been stopped
+2018-03-07 14:34:55 pid:12367 Workerman[start.php] start in DEBUG mode
+2018-03-07 14:39:38 pid:12367 Workerman[start.php] stopping ...
+2018-03-07 14:39:38 pid:12367 Workerman[start.php] has been stopped
+2018-03-07 14:43:46 pid:12763 Workerman[start.php] start in DEBUG mode
+2018-03-07 14:46:49 pid:12763 Workerman[start.php] stopping ...
+2018-03-07 14:46:49 pid:12763 Workerman[start.php] has been stopped
+2018-03-07 14:51:38 pid:13133 Workerman[start.php] start in DEBUG mode
+2018-03-07 14:53:06 pid:13133 Workerman[start.php] stopping ...
+2018-03-07 14:53:06 pid:13133 Workerman[start.php] has been stopped
+2018-03-07 14:54:17 pid:13278 Workerman[start.php] start in DEBUG mode
+2018-03-07 14:55:11 pid:13278 Workerman[start.php] stopping ...
+2018-03-07 14:55:11 pid:13278 Workerman[start.php] has been stopped

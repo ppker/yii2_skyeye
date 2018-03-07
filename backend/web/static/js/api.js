@@ -161,6 +161,17 @@
     };
 
     /**
+     * system_task
+     */
+    self.system_task = function(options) {
+        options = options ? options : {};
+        options.url = "/api/web/system/system_task";
+        return ajax(options);
+    };
+
+
+
+    /**
      * system_apito
      */
     self.system_apito = function(options) {

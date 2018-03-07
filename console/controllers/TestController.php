@@ -14,11 +14,13 @@ class TestController extends BaseController {
 
     public function actionIndex() {
 
-        Yii::info('this is index method', 'api');
+        Yii::info('this is index method--' . date('Y-m-d H:i:s'), 'api');
+        return json_encode(['success' => 1, 'data' => [], 'message' => '操作成功']);
     }
 
     public function actionIndex2() {
 
-        Yii::info('this is index2 method', 'api');
+        Yii::info('this is index2 method--' . date('Y-m-d H:i:s'), 'api');
+        return json_encode(['success' => 1, 'data' => [], 'message' => '操作成功']);
     }
 }

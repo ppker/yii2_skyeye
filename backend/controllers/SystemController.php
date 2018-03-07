@@ -38,4 +38,9 @@ class SystemController extends BaseController {
         return $this->render('apito');
     }
 
+    public function actionTask() {
+
+        return $this->render('task');
+    }
+
 }
