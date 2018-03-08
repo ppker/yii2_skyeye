@@ -145,7 +145,7 @@ class SystemController extends BaseController {
         if (is_array($id)) {
             if (Menu::deleteAll(['in', 'id', $id])) {
                 return ['success' => 1, 'message' => '批量删除成功！', 'data' => []];
-            } else return ['success' => 0, 'message' => '批量删除失败！', 'data' => []];
+            } else return ['success' => 0, 'message' => '批量删除失败！', 'data'9 => []];
         }else {
             if (Menu::findOne($id)->delete()) {
                 return ['success' => 1, 'message' => '删除成功！', 'data' => []];
@@ -164,7 +164,7 @@ class SystemController extends BaseController {
 
     public function actionSystem_task() {
 
-        (new \yii\db\Query())->from('{{%worker_task}}')
+        // (new \yii\db\Query())->from('{{%worker_task}}')
     }
 
 

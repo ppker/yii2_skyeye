@@ -65,7 +65,7 @@ $work->onWorkerStart = function($work) {
 
 $work->onMessage = function($connection, $data) {
 
-    var_dump($data);
+    var_dump($data);die;
     echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" . PHP_EOL;
     echo "this is work's onMessage " . PHP_EOL;
 };
