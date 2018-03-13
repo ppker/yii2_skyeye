@@ -108,6 +108,13 @@ class SystemController extends BaseController {
         return parent::re_format($data);
     }
 
+    public function actionUser_select_api() {
+
+        $data = User::find()->select(['id', 'name' => 'username'])->orderBy(['id' => SORT_ASC])->asArray()->all();
+        return parent::re_format($data);
+    }
+
+
     /**
      * 获取所有用户的真实姓名,id
      * @return array
@@ -145,7 +152,7 @@ class SystemController extends BaseController {
         if (is_array($id)) {
             if (Menu::deleteAll(['in', 'id', $id])) {
                 return ['success' => 1, 'message' => '批量删除成功！', 'data' => []];
-            } else return ['success' => 0, 'message' => '批量删除失败！', 'data'9 => []];
+            } else return ['success' => 0, 'message' => '批量删除失败！', 'data' => []];
         }else {
             if (Menu::findOne($id)->delete()) {
                 return ['success' => 1, 'message' => '删除成功！', 'data' => []];
@@ -164,10 +171,87 @@ class SystemController extends BaseController {
 
     public function actionSystem_task() {
 
-        // (new \yii\db\Query())->from('{{%worker_task}}')
+        $data = (new \yii\db\Query())->select('worker_task.*, user.username')->from('{{%worker_task}}')->leftJoin('user', 'user.id = worker_task.user_id')->all();
+
+        $arr_invoke = [1 => 'yii_cli', 2 => 'curl'];
+        $arr_persistent = [0 => '仅执行一次', 1 => '每天执行'];
+        $arr_status = [0 => '禁用', 1 => '正常', 2 => '删除'];
+        $arr_load_status = [0 => '未装载', 1 => '已装载'];
+        if (!empty($data)) {
+            foreach ($data as &$val) {
+                $val['invoke_type'] = $arr_invoke[$val['invoke_type']];
+                $val['persistent'] = $arr_persistent[$val['persistent']];
+                $val['status'] = $arr_status[$val['status']];
+                $val['load_status'] = $arr_load_status[$val['load_status']];
+                $val['created_at'] = date('Y-m-d H:i:s', $val['created_at']);
+                $val['updated_at'] = date('Y-m-d H:i:s', $val['updated_at']);
+            }
+        }
+
+        // var_dump($data);die;
+        return parent::re_format($data);
     }
 
 
+    public function actionTask_del() {
 
+        $id = Yii::$app->getRequest()->post('id');
+        if (empty($id)) return ['success' => 0, 'message' => '缺少参数 id', 'data' => []];
+        $res = Yii::$app->db->createCommand()->update('{{%worker_task%}}', [
+            'end_active_time' => date('Y-m-d H:i:s'),
+            'timer_id' => 0,
+            'status' => 2,
+            'load_status' => 0,
+            'updated_at' => date('Y-m-d H:i:s')
+        ], ['id' => $id])->execute();
+        if ($res) {
+            return ['success' => 1, 'message' => '删除成功！', 'data' => []];
+        } else return ['success' => 0, 'message' => '删除失败！', 'data' => []];
+    }
+
+    public function actionTask_add() {
+
+        $post = Yii::$app->getRequest()->post();
+        if (is_null($post)) return ['success' => 0, 'message' => '缺少参数！', 'data' => []];
+        if (empty($post['id'])) { // 新增
+            unset($post['id'], $post['_csrf-backend'], $post['access-token']);
+            $post['created_at'] = time();
+            $post['updated_at'] = time();
+            $res = Yii::$app->db->createCommand()->insert('{{%worker_task%}}', $post)->execute();
+            if ($res) return ['success' => 1, 'message' => '添加成功！', 'data' => []];
+            else return ['success' => 0, 'message' => '添加失败！', 'data' => []];
+        } else { // 修改
+            unset($post['_csrf-backend'], $post['access-token']);
+            $post['updated_at'] = time();
+            $res = Yii::$app->db->createCommand()->update('{{%worker_task%}}', $post, ['worker_task.id' => $post['id']])->execute();
+            if ($res) return ['success' => 1, 'message' => '修改成功！', 'data' => []];
+            else return ['success' => 0, 'message' => '修改失败！', 'data' => []];
+        }
+    }
+
+    public function actionTask_get() {
+
+        $id = Yii::$app->getRequest()->post('id');
+        if (is_null($id)) return ['success' => 0, 'message' => '缺少参数！', 'data' => []];
+        $data = (new \yii\db\Query())->select('worker_task.*, user.username')->from('{{%worker_task}}')->leftJoin('user', 'user.id = worker_task.user_id')
+            ->where(['worker_task.id' => (int)$id])->limit(1)->one();
+
+        $arr_invoke = [1 => 'yii_cli', 2 => 'curl'];
+        $arr_persistent = [0 => '仅执行一次', 1 => '每天执行'];
+        $arr_status = [0 => '禁用', 1 => '正常', 2 => '删除'];
+        $arr_load_status = [0 => '未装载', 1 => '已装载'];
+        if (!empty($data)) {
+            $data['invoke_type'] = $arr_invoke[$data['invoke_type']];
+            $data['persistent'] = $arr_persistent[$data['persistent']];
+            $data['status'] = $arr_status[$data['status']];
+            $data['load_status'] = $arr_load_status[$data['load_status']];
+            $data['created_at'] = date('Y-m-d H:i:s', $data['created_at']);
+            $data['updated_at'] = date('Y-m-d H:i:s', $data['updated_at']);
+        }
+
+        // var_dump($data);die;
+        return parent::re_format($data);
+
+    }
 
 }

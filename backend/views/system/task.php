@@ -86,7 +86,7 @@ $this->params['title_sub'] = '管理定时任务信息';
 
 <!--模态框-->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="width: 56%;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
@@ -98,64 +98,126 @@ $this->params['title_sub'] = '管理定时任务信息';
                     <input type="hidden" name="id" value="" >
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="title" class="control-label col-sm-3">名称</label>
+                            <label for="title" class="control-label col-sm-3">任务标题</label>
                             <div class="col-sm-9">
-                                <input type="text" value="" placeholder="请输入菜单名" class="form-control" name="title" minlength="1" required />
+                                <input type="text" value="" placeholder="请输入任务标题" class="form-control" name="title" minlength="1" required />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sort" class="control-label col-sm-3">排序</label>
+                            <label for="invoke_type" class="control-label col-sm-3">触发类型</label>
                             <div class="col-sm-9">
-                                <input type="text" value="" placeholder="请输入排序" class="form-control" name="sort" required />
+                                <select class="bs-select form-control" data-live-search="true"  name="invoke_type" id="invoke_type" data-size="8" required>
+                                    <option value="1" selected="selected">yii_cli</option>
+                                    <option value="2">curl</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="hide" class="control-label col-sm-3">隐藏</label>
-                            <div class="col-sm-9 text-center" style="margin-top: 7px;">
-                                <label class="mt-radio radio-inline">
-                                    <input type="radio" name="hide" value="0" checked />显示
-                                    <span></span>
-                                </label>
-                                <label class="mt-radio radio-inline">
-                                    <input type="radio" name="hide" value="1" />隐藏
-                                    <span></span>
-                                </label>
+                            <label for="command" class="control-label col-sm-3">任务命令</label>
+                            <div class="col-sm-9">
+                                <input type="text" value="" placeholder="请输入任务命令" class="form-control" name="command" required />
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="url" class="control-label col-sm-3">URL</label>
+                            <label for="timer_interval" class="control-label col-sm-3">定时器间隔</label>
                             <div class="col-sm-9">
-                                <input type="text" value="" placeholder="请输入URL" class="form-control" name="url" required >
+                                <input type="text" value="" placeholder="请输入定时器间隔" class="form-control" min="1" name="timer_interval" required>
                             </div>
                         </div>
+
+                        <div class="input-group" style="margin-bottom: 15px; margin-left: 27px;">
+                            <div class="input-group-addon" style="line-height: 1.42;">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input style="width: 205px;height: 34px;" type="text" placeholder="任务开始时间" value="" name="start_time" class="form-control input-sm">
+                        </div>
+
+                        <div class="input-group" style="margin-bottom: 15px; margin-left: 27px;">
+                            <div class="input-group-addon" style="line-height: 1.42;">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input style="width: 205px;height: 34px;" type="text" placeholder="任务截止时间" value="" name="end_time" class="form-control input-sm">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="input-group" style="margin-bottom: 15px; margin-left: 40px;">
+                            <div class="input-group-addon" style="line-height: 1.42;">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input style="width: 205px;height: 34px;" type="text" placeholder="任务触发时间" value="" name="trigger_time" class="form-control input-sm trigger_hour">
+                        </div>
+
+
+
                         <div class="form-group">
-                            <label for="group" class="control-label col-sm-3">分组</label>
+                            <label for="persistent" class="control-label col-sm-3">执行次数</label>
                             <div class="col-sm-9">
-                                <input type="text" value="" placeholder="请输入分组" class="form-control" name="group" >
+                                <select class="bs-select form-control" data-live-search="true"  name="persistent" id="persistent" data-size="8" required>
+                                    <option value="1" selected="selected">每天执行</option>
+                                    <option value="0">仅执行一次</option>
+                                </select>
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label for="status" class="control-label col-sm-3">状态</label>
-                            <div class="col-sm-9 text-center" style="margin-top: 7px;">
-                                <label class="mt-radio radio-inline">
-                                    <input type="radio" name="status" value="1" checked />正常
-                                    <span></span>
-                                </label>
-                                <label class="mt-radio radio-inline">
-                                    <input type="radio" name="status" value="0" />禁用
-                                    <span></span>
-                                </label>
+                            <label for="timer_id" class="control-label col-sm-3">定时器id</label>
+                            <div class="col-sm-9">
+                                <input type="text" value="" placeholder="请输入定时器id" class="form-control" name="timer_id" required>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="input-group" style="margin-bottom: 15px; margin-left: 27px;">
+                            <div class="input-group-addon" style="line-height: 1.42;">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input style="width: 205px;height: 34px;" type="text" placeholder="任务开始激活时间" value="" name="start_active_time" class="form-control input-sm">
+                        </div>
+
+                        <div class="input-group" style="margin-bottom: 15px; margin-left: 27px;">
+                            <div class="input-group-addon" style="line-height: 1.42;">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input style="width: 205px;height: 34px;" type="text" placeholder="任务结束激活时间" value="" name="end_active_time" class="form-control input-sm">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status" class="control-label col-sm-3">任务状态</label>
+                            <div class="col-sm-9">
+                                <select class="bs-select form-control" data-live-search="true"  name="status" id="status" data-size="8" required>
+                                    <option value="0">禁用</option>
+                                    <option value="1" selected="selected">正常</option>
+                                    <option value="2">删除</option>
+                                </select>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="pid" class="control-label col-sm-2">上级菜单</label>
-                            <div class="col-sm-10">
-                                <select class="bs-select form-control" data-live-search="true"  name="pid" id="pid_id" data-size="8" required>
 
+
+                    <div class="col-md-12">
+                        <div class="form-group col-md-6">
+                            <label for="user_id" class="control-label col-sm-3">任务创建人</label>
+                            <div class="col-sm-9">
+                                <select class="bs-select form-control" data-live-search="true"  name="user_id" id="user_id" data-size="8" required>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="load_status" class="control-label col-sm-3">任务状态</label>
+                            <div class="col-sm-9">
+                                <select class="bs-select form-control" data-live-search="true"  name="load_status" id="load_status" data-size="8" required>
+                                    <option value="0" selected="selected">未装载</option>
+                                    <option value="1">已装载</option>
                                 </select>
                             </div>
                         </div>

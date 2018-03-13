@@ -17,24 +17,31 @@ window.PAGE_ACTION = function() {
         $("table tr .btn-group li").on("click", "a[actionrule='edit']", function() {
             var $id = $(this).attr("actionid");
             if ($id) {
-                ZP.api.system_menu_get({
+                ZP.api.system_task_get({
                     data: {id: $id},
                     successCallBack: function(result){
 
-                        $("#addModal h4.modal-title").text('菜单编辑');
+                        $("#addModal h4.modal-title").text('任务编辑');
                         $("#addModal input[name='id']").val(result.data.id);
                         $("#addModal input[name='title']").val(result.data.title);
-                        $("#addModal input[name='sort']").val(result.data.sort);
-                        var hide = result.data.hide;
-                        $("#addModal input[name='hide'][value=" + hide + "]").attr("checked", true);
-                        $("#addModal input[name='url']").val(result.data.url);
-                        $("#addModal input[name='group']").val(result.data.group);
-                        var status = result.data.status;
-                        $("#addModal input[name='status'][value=" + status + "]").attr("checked", true);
-                        var pid = result.data.pid;
-                        $('.bs-select').selectpicker('val', pid); // 设置select的选中
-                        // console.log($("#addModal select[name='pid']").find("option[value=4]").attr("selected", true));
-                        // $("#addModal select[name='pid']").find("option[value="+ pid +"]").attr("selected", true);
+
+                        $("#addModal input[name='title']").val(result.data.title);
+                        $("select #invoke_type").selectpicker('val', result.data.invoke_type);
+                        $("#addModal input[name='command']").val(result.data.command);
+                        $("#addModal input[name='timer_interval']").val(result.data.timer_interval);
+                        $("#addModal input[name='start_time']").val(result.data.start_time);
+                        $("#addModal input[name='end_time']").val(result.data.end_time);
+                        $("#addModal input[name='trigger_time']").val(result.data.trigger_time);
+
+                        $("select #persistent").selectpicker('val', result.data.persistent);
+                        $("#addModal input[name='timer_id']").val(result.data.timer_id);
+                        $("#addModal input[name='start_active_time']").val(result.data.start_active_time);
+                        $("#addModal input[name='end_active_time']").val(result.data.end_active_time);
+
+                        $("select #status").selectpicker('val', result.data.status);
+                        $("select #user_id").selectpicker('val', result.data.user_id);
+                        $("select #load_status").selectpicker('val', result.data.load_status);
+
                         $("#addModal").modal('show');
                     },
                     failCallBack: ZP.utils.failCallBack
@@ -48,7 +55,7 @@ window.PAGE_ACTION = function() {
         $("table tr .btn-group li").on("click", "a[actionrule='del']", function() {
             var $id = $(this).attr("actionid");
             if ($id) {
-                ZP.api.system_menu_del({
+                ZP.api.system_task_del({
                     data: {id: $id},
                     successCallBack: function(result){
                         ZP.utils.alert_warning(result.message, true);
@@ -63,10 +70,10 @@ window.PAGE_ACTION = function() {
         ZP.utils.default_list({
             'api_url': 'system_task', // list的api
             'template_path': 'system/task_index.html',
-            'dataTable': $.extend(true, {}, ZP.utils.default_dataTable_list, {}),
-            'all_del_api': 'system_menu_del',
-            'add_api': 'system_menu_add',
-            'init_form_api': {'api': 'init_form_api', 'id': 'pid_id'}, // 需要对表单进行数据初始化操作
+            'dataTable': $.extend(true, {}, ZP.utils.default_dataTable_list, {scrollX: true}),
+            'all_del_api': 'system_task_del',
+            'add_api': 'system_task_add',
+            'init_form_api': {'api': 'user_select_api', 'id': 'user_id'},
             'btn_edit': btn_edit,
             'btn_del': btn_del,
         });
@@ -75,6 +82,10 @@ window.PAGE_ACTION = function() {
     return {
         init: function (){
             init_limit();
+
+            ZP.utils.target_second();
+            ZP.utils.target_time_second();
+
         }
     };
 

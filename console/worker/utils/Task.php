@@ -27,7 +27,7 @@ end_time > :end_time order by id asc ", [':start_time' => $now, ':end_time' => $
     public function updateCron($task_id, $timer_id) {
 
         $result = $this->__db->createCommand()->update("worker_task", ['timer_id' => $timer_id,
-            'start_active_time' => time(),
+            'start_active_time' => date('Y-m-d H:i:s'),
             'load_status' => 1,
             ], ['id' => $task_id])->execute();
         return $result;
@@ -35,7 +35,7 @@ end_time > :end_time order by id asc ", [':start_time' => $now, ':end_time' => $
 
     public function clear_timer() {
 
-        $res_clear = $this->__db->createCommand()->update("worker_task", ['timer_id' => 0, 'end_active_time' => time(), 'load_status' => 0, 'updated_at' => time()],
+        $res_clear = $this->__db->createCommand()->update("worker_task", ['timer_id' => 0, 'end_active_time' => date('Y-m-d H:i:s'), 'load_status' => 0, 'updated_at' => time()],
             ['status' => 1, 'load_status' => 0])->execute();
         return $res_clear;
     }

@@ -554,6 +554,54 @@
 
 
     // 触发时间日期控件 精确到秒
+    self.target_time_second = function() {
+
+        $("input[name$='_time']").each(function(){
+
+            $(this).datetimepicker({
+                format: "yyyy-mm-dd hh:ii:ss",
+                language: "zh-CN",
+                autoclose: true,
+                // startView: 3,
+                // minView: 3,
+                // maxView: 3,
+                minView: "day",
+                todayBtn: true,
+                todayHighlight: true,
+                // toolbarPlacement: "bottom",
+            }).on('change', function(e){
+                //$(this).data("DateTimePicker").hide(); // 监听change事件，进行关闭
+                //$(this).blur();
+            });
+        });
+    };
+
+    // 触发时间日期控件 精确到秒
+    self.target_second = function() {
+
+        $("input[class*='trigger_hour']").each(function(){
+
+            $(this).datetimepicker({
+                format: "hh:ii:ss",
+                language: "zh-CN",
+                autoclose: true,
+                startView: 0,
+                // minView: 3,
+                // maxView: 0,
+                minView: "hour",
+                todayBtn: true,
+                todayHighlight: true,
+                // toolbarPlacement: "bottom",
+            }).on('change', function(e){
+                //$(this).data("DateTimePicker").hide(); // 监听change事件，进行关闭
+                //$(this).blur();
+            });
+        });
+    };
+
+
+
+    // 触发时间日期控件 精确到秒
     self.target_timedate5 = function() {
 
         $("input[name='start_date3'], input[name='end_date3']").each(function(){

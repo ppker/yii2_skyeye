@@ -30,6 +30,15 @@ return [
         'GET,POST system_apito_del' => 'system_apito_del',
         'GET,POST system_apito_edit' => 'system_apito_edit',
         'GET,POST system_apito_get' => 'system_apito_get',
+
+        //　定时任务的配制
+        'GET,POST system_task' => 'system_task',
+        'GET,POST user_select_api' => 'user_select_api',
+        'GET,POST task_add' => 'task_add',
+        'GET,POST task_del' => 'task_del',
+        'GET,POST task_get' => 'task_get',
+
+
     ],
 
 ];

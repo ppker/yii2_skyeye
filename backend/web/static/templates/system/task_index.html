@@ -1,0 +1,74 @@
+<thead>
+<tr role="row">
+    <th>
+        <label class="mt-checkbox mt-checkbox-outline" style="padding-left:19px;"><input type="checkbox" class="select-on-check-all" id="checkAll"><span></span></label>全选
+    </th>
+
+    <th>任务标题</th>
+    <th>任务说明</th>
+    <th>触发类型</th>
+    <th>执行命令</th>
+    <th>定时器间隔(s)</th>
+    <th>任务开始时间</th>
+    <th>任务截止时间</th>
+    <th>任务触发时间</th>
+    <th>执行次数</th>
+    <th>任务开始激活时间</th>
+    <th>任务结束激活时间</th>
+    <th>定时器id</th>
+    <th>任务状态</th>
+    <th>定时器装载状态</th>
+    <th>任务创建人</th>
+    <th>创建时间</th>
+    <th>更新时间</th>
+    <th>操作</th>
+</tr>
+</thead>
+<tbody>
+{{#each list}}
+<tr id="{{id}}">
+    <td>
+        <label class="mt-checkbox mt-checkbox-outline" style="padding-left:19px;"><input type="checkbox" class="select"><span></span></label></td>
+
+    <td>{{title}}</td>
+    <td>{{content}}</td>
+    <td><span class="label label-sm label-success">{{invoke_type}}</span></td>
+    <td>{{command}}</td>
+    <td>{{timer_interval}}</td>
+    <td>{{start_time}}</td>
+    <td>{{end_time}}</td>
+    <td>{{trigger_time}}</td>
+    <td><span class="label label-sm label-success">{{persistent}}</span></td>
+    <td>{{start_active_time}}</td>
+    <td>{{end_active_time}}</td>
+    <td>{{timer_id}}</td>
+    <td><span class="label label-sm label-success">{{status}}</span></td>
+    <td><span class="label label-sm label-success">{{load_status}}</span></td>
+    <td>{{user_id}}</td>
+    <td>{{created_at}}</td>
+    <td>{{updated_at}}</td>
+    <td>
+        <div class="btn-group">
+            <button class="btn red dropdown-toggle" data-toggle="dropdown">操作
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="javascript:;" actionrule="del" actionid="{{id}}" class="btn btn-sm green"> <i class="glyphicon glyphicon-trash"></i>&nbsp;<span>删除</span> </a>
+                </li>
+                <li>
+                    <a href="javascript:;" actionrule="edit" actionid="{{id}}" class="btn btn-sm red"> <i class="glyphicon glyphicon-pencil"></i>&nbsp;<span>修改</span> </a>
+                </li>
+                <li>
+                    <a href="javascript:;" actionrule="active" actionid="{{id}}" class="btn btn-sm blue"><i class="glyphicon glyphicon-pencil"></i><span>激活</span></a>
+                </li>
+                <li>
+                    <a href="javascript:;" actionrule="unactive" actionid="{{id}}" class="btn btn-sm purple"><i class="glyphicon glyphicon-pencil"></i><span>停用</span></a>
+                </li>
+            </ul>
+        </div>
+    </td>
+
+</tr>
+{{/each}}
+</tbody>

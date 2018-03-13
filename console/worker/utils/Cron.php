@@ -73,7 +73,7 @@ class Cron {
         } else if ($now >= strtotime($data['end_time'])) { // task transient delete this task
             Timer::del($data['timer_id']);
             global $yii_db;
-            $res_upload = $yii_db->createCommand()->update("worker_task", ['timer_id' => 0, 'end_active_time' => time(),
+            $res_upload = $yii_db->createCommand()->update("worker_task", ['timer_id' => 0, 'end_active_time' => date('Y-m-d H:i:s'),
                 'load_status' => 0, 'updated_at' => time()], ['id' => $data['id']])->execute();
         }
 

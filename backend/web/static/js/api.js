@@ -249,6 +249,17 @@
 	};
 
     /**
+     * user_select_api
+     */
+    self.user_select_api = function(options) {
+        options = options ? options : {};
+        options.url = "/api/web/system/user_select_api";
+        options.async = false;
+        return ajax(options);
+    };
+
+
+    /**
      * system_menu_get
      */
     self.system_menu_get = function(options) {
@@ -263,6 +274,33 @@
     self.system_menu_del = function(options) {
         options = options ? options : {};
         options.url = "/api/web/system/menu_del";
+        return ajax(options);
+    };
+
+    /**
+     * system_task_del
+     */
+    self.system_task_del = function(options) {
+        options = options ? options : {};
+        options.url = "/api/web/system/task_del";
+        return ajax(options);
+    };
+
+    /**
+     * system_task_add
+     */
+    self.system_task_add = function(options) {
+        options = options ? options : {};
+        options.url = "/api/web/system/task_add";
+        return ajax(options);
+    };
+
+    /**
+     * system_task_get
+     */
+    self.system_task_get = function(options) {
+        options = options ? options : {};
+        options.url = "/api/web/system/task_get";
         return ajax(options);
     };
 
