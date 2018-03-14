@@ -65,16 +65,40 @@ $work->onWorkerStart = function($work) {
 
 $work->onMessage = function($connection, $data) {
 
-    var_dump($data);die;
-    echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" . PHP_EOL;
-    echo "this is work's onMessage " . PHP_EOL;
+    global $yii_db;
+    $data = json_decode(rtrim($data), true);
+    if (!empty($data) && is_array($data)) {
+        switch($data['type']) {
+            case 'add':
+                $task_data = (new Task($yii_db))->getTaskById((int)$data['id']);
+                if (!empty($task_data)) $res_end = Load_task::into_timer($task_data);
+                break;
+            case 'stop':
+                $task_data = (new Task($yii_db))->getTaskById((int)$data['id']);
+                if (!empty($task_data)) {
+                    Timer::del($task_data['timer_id']);
+                    global $yii_db;
+                    $res_end = $yii_db->createCommand()->update("worker_task", ['timer_id' => 0, 'end_active_time' => date('Y-m-d H:i:s'),
+                        'load_status' => 0, 'updated_at' => time()], ['id' => (int)$data['id']])->execute();
+                }
+                break;
+            default:
+                $res_end = false;
+                break;
+        }
+        if (false == $res_end) {
+            $send_data = ['success' => 0, 'message' => '抱歉,操作失败！', 'data' => []];
+        } else $send_data = ['success' => 1, 'message' => '恭喜你,操作成功!', 'data' => []];
+        $connection->send(json_encode($send_data));
+    }
+
 };
 
 $work->onWorkerStop = function($worker) {
 
     global $yii_db;
     $res_clear = (new Task($yii_db))->clear_timer();
-    echo "Worker is stoping" . PHP_EOL;
+    echo "Worker is stoping!" . PHP_EOL;
 
 };
 

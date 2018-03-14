@@ -19,10 +19,20 @@ class Task {
 
         $now = date('Y-m-d H:i:s');
 
-        $tacks = $this->__db->createCommand("select * from {{%worker_task%}} where [[status]] = 1 and [[start_time]] <= :start_time and 
+        $tasks = $this->__db->createCommand("select * from {{%worker_task%}} where [[status]] = 1 and [[start_time]] <= :start_time and 
 end_time > :end_time order by id asc ", [':start_time' => $now, ':end_time' => $now])->queryAll(); // ->getRawSql();
-        return $tacks;
+        return $tasks;
     }
+
+
+    public function getTaskById($id) {
+
+        if (empty($id) || !is_numeric($id)) return ['success' => 0, 'message' => '抱歉,任务id非法!', 'data' => []];
+        $task_data = $this->__db->createCommand("select * from {{%worker_task%}} where [[status]] = 1 and [[end_time]] > :end_time and [[id]] = :id limit 1",
+            [':end_time' => date('Y-m-d H:i:s'), ':id' => (int)$id])->queryOne();
+        return $task_data;
+    }
+
 
     public function updateCron($task_id, $timer_id) {
 
@@ -36,7 +46,7 @@ end_time > :end_time order by id asc ", [':start_time' => $now, ':end_time' => $
     public function clear_timer() {
 
         $res_clear = $this->__db->createCommand()->update("worker_task", ['timer_id' => 0, 'end_active_time' => date('Y-m-d H:i:s'), 'load_status' => 0, 'updated_at' => time()],
-            ['status' => 1, 'load_status' => 0])->execute();
+            ['status' => 1, 'load_status' => 1])->execute();
         return $res_clear;
     }
 

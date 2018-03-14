@@ -42,4 +42,6 @@ return [
 
     ],
 
+    'socket_server' => "tcp://0.0.0.0:2018",
+
 ];

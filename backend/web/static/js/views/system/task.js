@@ -71,8 +71,7 @@ window.PAGE_ACTION = function() {
 
     // active
     btn_active = function() {
-
-        $("table tr .btn-group li").on("click", "a[actionrule='active']", function() {
+        $("table tr .btn-group ul li").on("click", "a[actionrule='active']", function() {
             var $id = $(this).attr("actionid");
             if ($id) {
                 ZP.api.system_task_active({
@@ -114,15 +113,14 @@ window.PAGE_ACTION = function() {
             'init_form_api': {'api': 'user_select_api', 'id': 'user_id'},
             'btn_edit': btn_edit,
             'btn_del': btn_del,
+            'btn_active': btn_active,
+            'btn_unactive': btn_unactive,
         });
     };
 
     return {
         init: function (){
             init_limit();
-
-            btn_active();
-            btn_unactive();
 
             ZP.utils.target_second();
             ZP.utils.target_time_second();

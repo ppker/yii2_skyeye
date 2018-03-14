@@ -127,30 +127,47 @@ $this->params['title_sub'] = '管理定时任务信息';
                             </div>
                         </div>
 
-                        <div class="input-group" style="margin-bottom: 15px; margin-left: 27px;">
-                            <div class="input-group-addon" style="line-height: 1.42;">
-                                <i class="fa fa-calendar"></i>
+                        <div class="form-group">
+                            <label for="start_time" class="control-label col-sm-4">任务开始时间</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon" style="line-height: 1.42;">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input style="width: 205px;height: 34px;margin-top: 0;" type="text" placeholder="任务开始时间" value="" name="start_time" class="form-control input-sm">
+                                </div>
                             </div>
-                            <input style="width: 205px;height: 34px;" type="text" placeholder="任务开始时间" value="" name="start_time" class="form-control input-sm">
                         </div>
 
-                        <div class="input-group" style="margin-bottom: 15px; margin-left: 27px;">
-                            <div class="input-group-addon" style="line-height: 1.42;">
-                                <i class="fa fa-calendar"></i>
+                        <div class="form-group">
+                            <label for="end_time" class="control-label col-sm-4">任务截止时间</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon" style="line-height: 1.42;">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input style="width: 205px;height: 34px;margin-top: 0;" type="text" placeholder="任务截止时间" value="" name="end_time" class="form-control input-sm">
+                                </div>
                             </div>
-                            <input style="width: 205px;height: 34px;" type="text" placeholder="任务截止时间" value="" name="end_time" class="form-control input-sm">
                         </div>
                     </div>
 
 
                     <div class="col-md-6">
 
-                        <div class="input-group" style="margin-bottom: 15px; margin-left: 40px;">
-                            <div class="input-group-addon" style="line-height: 1.42;">
-                                <i class="fa fa-calendar"></i>
+
+                        <div class="form-group">
+                            <label for="trigger_time" class="control-label col-sm-4">任务触发时间</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon" style="line-height: 1.42;">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input style="width: 205px;height: 34px;margin-top: 0;" type="text" placeholder="任务触发时间" value="" name="trigger_time" class="form-control input-sm trigger_hour">
+                                </div>
                             </div>
-                            <input style="width: 205px;height: 34px;" type="text" placeholder="任务触发时间" value="" name="trigger_time" class="form-control input-sm trigger_hour">
                         </div>
+
 
 
 
@@ -175,18 +192,28 @@ $this->params['title_sub'] = '管理定时任务信息';
 
 
                     <div class="col-md-6">
-                        <div class="input-group" style="margin-bottom: 15px; margin-left: 27px;">
-                            <div class="input-group-addon" style="line-height: 1.42;">
-                                <i class="fa fa-calendar"></i>
+                        <div class="form-group">
+                            <label for="start_active_time" class="control-label col-sm-4">任务激活时间</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon" style="line-height: 1.42;">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input style="width: 205px;height: 34px;margin-top: 0;" type="text" placeholder="任务开始激活时间" value="" name="start_active_time" class="form-control input-sm">
+                                </div>
                             </div>
-                            <input style="width: 205px;height: 34px;" type="text" placeholder="任务开始激活时间" value="" name="start_active_time" class="form-control input-sm">
                         </div>
 
-                        <div class="input-group" style="margin-bottom: 15px; margin-left: 27px;">
-                            <div class="input-group-addon" style="line-height: 1.42;">
-                                <i class="fa fa-calendar"></i>
+                        <div class="form-group">
+                            <label for="end_active_time" class="control-label col-sm-4">任务结束激活时间</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon" style="line-height: 1.42;">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input style="width: 205px;height: 34px;margin-top: 0;" type="text" placeholder="任务结束激活时间" value="" name="end_active_time" class="form-control input-sm">
+                                </div>
                             </div>
-                            <input style="width: 205px;height: 34px;" type="text" placeholder="任务结束激活时间" value="" name="end_active_time" class="form-control input-sm">
                         </div>
 
                         <div class="form-group">

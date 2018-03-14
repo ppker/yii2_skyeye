@@ -258,6 +258,19 @@ class SystemController extends BaseController {
 
         $id = Yii::$app->getRequest()->post('id');
         if (empty($id)) return ['success' => 0, 'message' => '缺少参数!', 'data' => []];
+        $task_data = (new \yii\db\Query())->from('{{%worker_task%}}')->where(['id' => (int)$id])->limit(1)->one();
+        if (empty($task_data)) return ['success' => 0, 'message' => '抱歉,查无此任务!', 'data' => []];
+        if (is_null($task_data['command'])) return ['success' => 0, 'message' => '抱歉, 任务没有执行命令!', 'data' => []];
+        if (time() >= strtotime($task_data['end_time'])) {
+            return ['success' => 0, 'message' => '抱歉, 此任务已经过期了!', 'data' => []];
+        }
+        if (empty($task_data['trigger_time'])) return ['success' => 0, 'message' => '抱歉,任务没有触发时间!', 'data' => []];
+        if (!empty($task_data['timer_id']) || $task_data['load_status'] == 1) {
+            return ['success' => 0, 'message' => '抱歉,任务已经启动过了!', 'data' => []];
+        }
+        if (1 != $task_data['status']) return ['success' => 0, 'message' => '抱歉,任务状态不可用', 'data' => []];
+        $res = $this->_socket_server(['type' => 'add', 'id' => (int)$id]);
+        return $res;
 
     }
 
@@ -265,6 +278,30 @@ class SystemController extends BaseController {
 
         $id = Yii::$app->getRequest()->post('id');
         if (empty($id)) return ['success' => 0, 'message' => '缺少参数!', 'data' => []];
+        $task_data = (new \yii\db\Query())->from('{{%worker_task%}}')->where(['id' => (int)$id])->limit(1)->one();
+        if (empty($task_data)) return ['success' => 0, 'message' => '抱歉,查无此任务!', 'data' => []];
+        if (empty($task_data['timer_id']) || $task_data['load_status'] == 0 || $task_data['load_status'] == 0) {
+            return ['success' => 0, 'message' => '抱歉,任务还没有启动!', 'data' => []];
+        }
+        if (1 != $task_data['status']) return ['success' => 0, 'message' => '抱歉,此任务无效,无法停止!', 'data' => []];
+        $res = $this->_socket_server(['type' => 'stop', 'id' => (int)$id]);
+        return $res;
+    }
+
+
+    protected function _socket_server($data) {
+
+        $buffer = json_encode($data) . "\n";
+        $client = stream_socket_client(Yii::$app->params['socket_server'], $errno, $errstr, 100);
+        if (!$client) {
+            Yii::info("socket_client连接发生错误: {$errno}--{$errstr}} \n", "api");
+            return ['success' => 0, 'message' => "socket_client连接发生错误: {$errno}--{$errstr}} ", 'data' => []];
+        }
+        fwrite($client, $buffer);
+        $res = fgets($client);
+        fclose($client);
+        return json_decode($res, true);
+
     }
 
 }

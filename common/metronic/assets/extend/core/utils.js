@@ -1403,6 +1403,8 @@
 						if ('undefined' != typeof cfg_data.table_api) self.default_btn_table_submit(cfg_data.table_api);
                         if ('undefined' != typeof cfg_data.btn_edit && "" != cfg_data.btn_edit) cfg_data.btn_edit();
                         if ('undefined' != typeof cfg_data.btn_del && "" != cfg_data.btn_del) cfg_data.btn_del();
+                        if ('undefined' != typeof cfg_data.btn_active && "" != cfg_data.btn_active) cfg_data.btn_active();
+                        if ('undefined' != typeof cfg_data.btn_unactive && "" != cfg_data.btn_unactive) cfg_data.btn_unactive();
 						if ('undefined' != typeof cfg_data.btn_open && "" != cfg_data.btn_open) cfg_data.btn_open();
 						if ('undefined' != typeof cfg_data.btn_test && "" != cfg_data.btn_test) cfg_data.btn_test();
 						if ('undefined' != typeof cfg_data.btn_run && "" != cfg_data.btn_run) cfg_data.btn_run();
