@@ -11,6 +11,8 @@ window.PAGE_ACTION = function() {
 
     var init_limit = null, // 默认条件页面
         btn_edit = null,
+        btn_active = null,
+        btn_unactive = null,
         btn_del = null; // 单个删除的按钮
 
     btn_edit = function() { // 编辑操作
@@ -66,6 +68,42 @@ window.PAGE_ACTION = function() {
         });
     };
 
+
+    // active
+    btn_active = function() {
+
+        $("table tr .btn-group li").on("click", "a[actionrule='active']", function() {
+            var $id = $(this).attr("actionid");
+            if ($id) {
+                ZP.api.system_task_active({
+                    data: {id: $id},
+                    successCallBack: function(result) {
+                        ZP.utils.alert_warning(result.message, true);
+                    },
+                    failCallBack: ZP.utils.failCallBack
+                });
+            }
+        });
+    };
+
+    // unactive
+    btn_unactive = function() {
+
+        $("table tr .btn-group li").on("click", "a[actionrule='unactive']", function() {
+            var $id = $(this).attr("actionid");
+            if ($id) {
+                ZP.api.system_task_unactive({
+                    data: {id: $id},
+                    successCallBack: function(result) {
+                        ZP.utils.alert_warning(result.message, true);
+                    },
+                    failCallBack: ZP.utils.failCallBack
+                });
+            }
+        });
+    };
+
+
     init_limit = function() {
         ZP.utils.default_list({
             'api_url': 'system_task', // list的api
@@ -82,6 +120,9 @@ window.PAGE_ACTION = function() {
     return {
         init: function (){
             init_limit();
+
+            btn_active();
+            btn_unactive();
 
             ZP.utils.target_second();
             ZP.utils.target_time_second();

@@ -254,4 +254,17 @@ class SystemController extends BaseController {
 
     }
 
+    public function actionTask_active() {
+
+        $id = Yii::$app->getRequest()->post('id');
+        if (empty($id)) return ['success' => 0, 'message' => '缺少参数!', 'data' => []];
+
+    }
+
+    public function actionTask_unactive() {
+
+        $id = Yii::$app->getRequest()->post('id');
+        if (empty($id)) return ['success' => 0, 'message' => '缺少参数!', 'data' => []];
+    }
+
 }

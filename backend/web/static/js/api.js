@@ -304,5 +304,25 @@
         return ajax(options);
     };
 
+    /**
+     * system_task_active
+     */
+    self.system_task_active = function(options) {
+        options = options ? options : {};
+        options.url = "/api/web/system/task_active";
+        return ajax(options);
+    };
+
+    /**
+     * system_task_unactive
+     */
+    self.system_task_unactive = function(options) {
+        options = options ? options : {};
+        options.url = "/api/web/system/task_unactive";
+        return ajax(options);
+    };
+
+
+
 
 })(ZP, jQuery);

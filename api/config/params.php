@@ -37,7 +37,8 @@ return [
         'GET,POST task_add' => 'task_add',
         'GET,POST task_del' => 'task_del',
         'GET,POST task_get' => 'task_get',
-
+        'GET,POST task_active' => 'task_active',
+        'GET,POST task_unactive' => 'task_unactive',
 
     ],
 

@@ -3,7 +3,7 @@
     <th>
         <label class="mt-checkbox mt-checkbox-outline" style="padding-left:19px;"><input type="checkbox" class="select-on-check-all" id="checkAll"><span></span></label>全选
     </th>
-
+    <th>操作</th>
     <th>任务标题</th>
     <th>任务说明</th>
     <th>触发类型</th>
@@ -21,7 +21,6 @@
     <th>任务创建人</th>
     <th>创建时间</th>
     <th>更新时间</th>
-    <th>操作</th>
 </tr>
 </thead>
 <tbody>
@@ -29,24 +28,6 @@
 <tr id="{{id}}">
     <td>
         <label class="mt-checkbox mt-checkbox-outline" style="padding-left:19px;"><input type="checkbox" class="select"><span></span></label></td>
-
-    <td>{{title}}</td>
-    <td>{{content}}</td>
-    <td><span class="label label-sm label-success">{{invoke_type}}</span></td>
-    <td>{{command}}</td>
-    <td>{{timer_interval}}</td>
-    <td>{{start_time}}</td>
-    <td>{{end_time}}</td>
-    <td>{{trigger_time}}</td>
-    <td><span class="label label-sm label-success">{{persistent}}</span></td>
-    <td>{{start_active_time}}</td>
-    <td>{{end_active_time}}</td>
-    <td>{{timer_id}}</td>
-    <td><span class="label label-sm label-success">{{status}}</span></td>
-    <td><span class="label label-sm label-success">{{load_status}}</span></td>
-    <td>{{user_id}}</td>
-    <td>{{created_at}}</td>
-    <td>{{updated_at}}</td>
     <td>
         <div class="btn-group">
             <button class="btn red dropdown-toggle" data-toggle="dropdown">操作
@@ -68,6 +49,23 @@
             </ul>
         </div>
     </td>
+    <td>{{title}}</td>
+    <td>{{content}}</td>
+    <td><span class="label label-sm label-success">{{invoke_type}}</span></td>
+    <td>{{command}}</td>
+    <td>{{timer_interval}}</td>
+    <td>{{start_time}}</td>
+    <td>{{end_time}}</td>
+    <td>{{trigger_time}}</td>
+    <td><span class="label label-sm label-success">{{persistent}}</span></td>
+    <td>{{start_active_time}}</td>
+    <td>{{end_active_time}}</td>
+    <td>{{timer_id}}</td>
+    <td><span class="label label-sm label-success">{{status}}</span></td>
+    <td><span class="label label-sm label-success">{{load_status}}</span></td>
+    <td>{{username}}</td>
+    <td>{{created_at}}</td>
+    <td>{{updated_at}}</td>
 
 </tr>
 {{/each}}
