@@ -28,7 +28,7 @@ class BaseController extends Controller {
     public function init() {
 
         parent::init();
-        ini_set("memory_limit", "2000M");
+        ini_set("memory_limit", "6000M");
         set_time_limit(0);
     }
 
